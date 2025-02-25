@@ -301,14 +301,14 @@ footer {
   
     /* Hide Brand, About, and Contact Us sections on mobile */
     .brand-section,
-    .about-section,
-    .contact-section {
+    .about-section {
       display: none;
     }
   
     /* Show only Support and Social Media sections on mobile */
     .support-section,
-    .social-media-section {
+    .social-media-section,
+    .contact-section {
       display: block;
     }
   }
