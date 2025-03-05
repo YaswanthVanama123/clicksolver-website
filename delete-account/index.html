@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Delete Account - Click Solver</title>
   <meta name="description" content="Request to delete your Click Solver account. Learn how to remove your data and what information is retained.">
-  
+
   <style>
     /* General Page Styling */
     body {
@@ -19,7 +19,7 @@
 
     /* Container */
     .container {
-      max-width: 800px;
+      max-width: 500px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -65,39 +65,108 @@
     .delete-account {
       padding: 40px 20px;
       text-align: left;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #f9f9f9;
     }
 
     .delete-account h2 {
       color: #ff4500;
-      font-size: 28px;
+      font-size: 26px;
       text-align: center;
     }
 
-    .delete-account p {
-      font-size: 18px;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .delete-account ol, .delete-account ul {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-left: 20px;
-    }
-
-    .delete-account ol li, .delete-account ul li {
-      margin-bottom: 10px;
-    }
-
-    /* Email Link */
-    .delete-account a {
-      color: #ff4500;
+    .delete-account label {
+      display: block;
+      font-size: 16px;
+      margin-top: 10px;
       font-weight: bold;
-      text-decoration: none;
     }
 
-    .delete-account a:hover {
-      text-decoration: underline;
+    .delete-account input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      background: #e9ecef;
+      color: #212121;
+    }
+
+    /* Delete Button */
+    .delete-btn {
+      width: 100%;
+      background: #ff4500;
+      color: white;
+      font-size: 18px;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .delete-btn:hover {
+      background: #d13800;
+    }
+
+    /* Confirmation Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-content h3 {
+      color: #ff4500;
+      font-size: 22px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .cancel-btn, .confirm-btn {
+      flex: 1;
+      margin: 0 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .cancel-btn {
+      background: #ccc;
+      color: #212121;
+    }
+
+    .confirm-btn {
+      background: #ff4500;
+      color: white;
+    }
+
+    .confirm-btn:hover {
+      background: #d13800;
     }
 
     /* Footer */
@@ -130,37 +199,76 @@
 
   <section class="delete-account">
     <div class="container">
-      <h2>Request to Delete Your Account</h2>
-      <p>If you wish to delete your Click Solver account and associated data, follow these steps:</p>
-      <ol>
-        <li>Open the Click Solver app and go to <strong>Account Settings</strong>.</li>
-        <li>Tap on <strong>Delete My Account</strong>.</li>
-        <li>Confirm your request by entering your registered phone number and email.</li>
-        <li>You will receive a confirmation email; follow the instructions to complete deletion.</li>
-      </ol>
+      <h2>Delete Your Account</h2>
+      <p>Once you delete your account, all associated data will be permanently removed.</p>
 
-      <h3>What Data Will Be Deleted?</h3>
-      <ul>
-        <li>Your name, email, and phone number.</li>
-        <li>Your service request and payment history.</li>
-        <li>Saved addresses and preferences.</li>
-      </ul>
+      <label for="full-name">Full Name</label>
+      <input type="text" id="full-name" disabled>
 
-      <h3>What Data Will Be Retained?</h3>
-      <ul>
-        <li>Some transaction records may be retained for legal and fraud prevention purposes.</li>
-        <li>Data required by financial regulations may be kept for up to 6 months.</li>
-      </ul>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" disabled>
 
-      <h3>Need Help?</h3>
-      <p>If you face issues, contact us at <a href="mailto:support@clicksolver.com">support@clicksolver.com</a>.</p>
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" disabled>
+
+      <button class="delete-btn" onclick="openModal()">Delete Account</button>
     </div>
   </section>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmationModal" class="modal">
+    <div class="modal-content">
+      <h3>Are you sure you want to delete your account?</h3>
+      <p>This action cannot be undone.</p>
+      <div class="modal-buttons">
+        <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        <button class="confirm-btn" onclick="deleteAccount()">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
       <p>&copy; 2025 Click Solver. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // Example function to load user details (Replace with actual data retrieval)
+    function loadUserDetails() {
+      // Simulating user details (In real case, fetch from backend or localStorage)
+      const user = {
+        name: "John Doe",
+        email: "johndoe@example.com",
+        phone: "+91 9876543210"
+      };
+
+      document.getElementById("full-name").value = user.name;
+      document.getElementById("email").value = user.email;
+      document.getElementById("phone").value = user.phone;
+    }
+
+    // Open Confirmation Modal
+    function openModal() {
+      document.getElementById("confirmationModal").style.display = "flex";
+    }
+
+    // Close Confirmation Modal
+    function closeModal() {
+      document.getElementById("confirmationModal").style.display = "none";
+    }
+
+    // Delete Account Function (Replace with actual API call)
+    function deleteAccount() {
+      alert("Your account has been deleted successfully!");
+      closeModal();
+
+      // Simulating account deletion (In real case, make API request)
+      window.location.href = "/";
+    }
+
+    // Load user details when the page loads
+    window.onload = loadUserDetails;
+  </script>
 </body>
 </html>
