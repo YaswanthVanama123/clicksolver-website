@@ -1,161 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Delete Account - Click Solver</title>
-  <meta name="description" content="Request to delete your Click Solver account. Learn how to remove your data and what information is retained.">
+  <meta
+    name="description"
+    content="How to permanently delete your Click Solver account. Learn which data is removed and what is retained for legal or fraud prevention purposes."
+  />
 
+  <!-- Inline CSS for a clean, self-contained page -->
   <style>
-    /* General Page Styling */
+    /* ------------------ RESET & BASE ------------------ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
       background-color: #ffffff;
       color: #212121;
-      text-align: center;
+      line-height: 1.6;
+    }
+    a {
+      color: #ff4500;
+      text-decoration: none;
+      transition: 0.2s ease-in-out;
+    }
+    a:hover {
+      text-decoration: underline;
     }
 
-    /* Container */
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* Header */
+    /* ------------------ HEADER ------------------ */
     header {
       background-color: #212121;
-      color: white;
-      padding: 15px 0;
+      padding: 1rem;
       text-align: center;
+      color: #fff;
     }
-
-    header h1 {
-      font-size: 24px;
-      margin: 0;
+    header .brand {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
     }
-
-    /* Navigation */
     nav ul {
       list-style: none;
-      padding: 0;
-      margin-top: 10px;
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 1.2rem;
     }
-
-    nav ul li {
-      display: inline;
-    }
-
     nav ul li a {
-      color: white;
+      color: #fff;
+      font-size: 0.95rem;
       text-decoration: none;
-      font-size: 16px;
     }
-
     nav ul li a:hover {
       text-decoration: underline;
     }
 
-    /* Delete Account Section */
-    .delete-account {
-      padding: 40px 20px;
-      text-align: left;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      background: #f9f9f9;
+    /* ------------------ CONTAINER ------------------ */
+    .container {
+      width: 90%;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
     }
 
-    .delete-account h2 {
+    /* ------------------ MAIN CONTENT ------------------ */
+    .title {
+      font-size: 2rem;
       color: #ff4500;
-      font-size: 26px;
+      margin-bottom: 0.5rem;
       text-align: center;
     }
-
-    .delete-account p {
-      font-size: 18px;
-      line-height: 1.6;
+    .subtitle {
+      font-size: 1.1rem;
       text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
     }
 
-    .delete-account ol {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-left: 20px;
+    .steps, .data-list {
+      margin: 1rem 0 2rem;
+      font-size: 1rem;
+    }
+    .steps li,
+    .data-list li {
+      margin: 0.5rem 0;
+    }
+    .steps li::marker,
+    .data-list li::marker {
+      color: #ff4500;
+    }
+    .section-heading {
+      font-size: 1.25rem;
+      color: #ff4500;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
     }
 
-    .delete-account ol li {
-      margin-bottom: 10px;
-    }
-
-    /* Footer */
+    /* ------------------ FOOTER ------------------ */
     footer {
       background-color: #212121;
-      color: white;
+      color: #ffffff;
       text-align: center;
-      padding: 15px 0;
-      margin-top: 40px;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    footer p {
+      font-size: 0.9rem;
     }
 
-    footer p {
-      margin: 0;
+    /* ------------------ RESPONSIVE MEDIA QUERY ------------------ */
+    @media (max-width: 600px) {
+      .title {
+        font-size: 1.6rem;
+      }
+      .subtitle {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- ================= HEADER ================= -->
   <header>
-    <div class="container">
-      <h1>Click Solver</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#services">Services</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+    <div class="brand">Click Solver</div>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="delete-account">
-    <div class="container">
-      <h2>Delete Your Account</h2>
-      <p>If you wish to delete your Click Solver account, follow these steps:</p>
-      <ol>
-        <li>Open the **Click Solver** app.</li>
-        <li>Go to **Account Settings**.</li>
-        <li>Click on **Delete My Account**.</li>
-        <li>Your **Name, Email, and Phone Number** will be displayed.</li>
-        <li>Click the **Delete Account** button.</li>
-        <li>A **confirmation screen** will appear.</li>
-        <li>Confirm your deletion request to proceed.</li>
-      </ol>
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="container">
+    <h1 class="title">Delete Your Account</h1>
+    <p class="subtitle">
+      If you wish to permanently remove your Click Solver account and associated data,
+      please follow the steps below.
+    </p>
 
-      <h3>What Data Will Be Deleted?</h3>
-      <ul>
-        <li>Your name, email, and phone number.</li>
-        <li>Your service request and payment history.</li>
-        <li>Saved addresses and preferences.</li>
-      </ul>
+    <!-- Steps to delete the account in the app -->
+    <ol class="steps">
+      <li>Open the <strong>Click Solver</strong> app on your device.</li>
+      <li>Go to <strong>Account Settings</strong>.</li>
+      <li>Select <strong>Delete My Account</strong>.</li>
+      <li>You will see your <strong>Name, Email, and Phone Number</strong>.</li>
+      <li>Tap the <strong>Delete Account</strong> button to proceed.</li>
+      <li>A <strong>confirmation screen</strong> will appear.</li>
+      <li>Confirm your account deletion to finalize the process.</li>
+    </ol>
 
-      <h3>What Data Will Be Retained?</h3>
-      <ul>
-        <li>Some transaction records may be retained for legal and fraud prevention purposes.</li>
-        <li>Data required by financial regulations may be kept for up to 6 months.</li>
-      </ul>
+    <!-- Data removed or retained -->
+    <h2 class="section-heading">What Data Will Be Deleted?</h2>
+    <ul class="data-list">
+      <li>Your name, email, and phone number.</li>
+      <li>All service requests, payment history, and addresses.</li>
+      <li>Any saved preferences related to your account.</li>
+    </ul>
 
-      <h3>Need Help?</h3>
-      <p>If you face issues, contact us at <a href="mailto:support@clicksolver.com">support@clicksolver.com</a>.</p>
-    </div>
-  </section>
+    <h2 class="section-heading">What Data Will Be Retained?</h2>
+    <ul class="data-list">
+      <li>
+        Some transaction records may be retained for legal and fraud prevention
+        purposes.
+      </li>
+      <li>Data required by financial regulations may be kept for up to 6 months.</li>
+    </ul>
 
+    <!-- Support Contact -->
+    <h2 class="section-heading">Need Help?</h2>
+    <p>
+      If you have any questions or experience issues,
+      please contact us at
+      <a href="mailto:support@clicksolver.com">support@clicksolver.com</a>.
+    </p>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
   <footer>
-    <div class="container">
-      <p>&copy; 2025 Click Solver. All rights reserved.</p>
-    </div>
+    <p>&copy; 2025 Click Solver. All rights reserved.</p>
+    <p>Developer: <strong>Click Solver</strong></p>
   </footer>
 </body>
 </html>
