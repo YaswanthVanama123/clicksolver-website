@@ -2,123 +2,317 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Delete Account - Click Solver</title>
-  <meta
-    name="description"
-    content="How to permanently delete your Click Solver account. Learn which data is removed and what is retained for legal or fraud prevention purposes."
-  />
+  <meta name="description" content="How to permanently delete your Click Solver account. Learn which data is removed and what is retained for legal or fraud prevention purposes." />
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <!-- Inline CSS for a clean, self-contained page -->
   <style>
-    /* ------------------ RESET & BASE ------------------ */
+    /* ------------------ BASE STYLES ------------------ */
+    :root {
+      --primary: #2A2D3E;
+      --accent: #FF6B6B;
+      --text: #2D2D2D;
+      --light-bg: #F9FAFB;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #ffffff;
-      color: #212121;
+      color: var(--text);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
-    a {
-      color: #ff4500;
-      text-decoration: none;
-      transition: 0.2s ease-in-out;
+
+    /* ------------------ ANIMATIONS ------------------ */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    a:hover {
-      text-decoration: underline;
+
+    @keyframes listItemAppear {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     /* ------------------ HEADER ------------------ */
     header {
-      background-color: #212121;
-      padding: 1rem;
-      text-align: center;
-      color: #fff;
-    }
-    header .brand {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 0.3rem;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-    }
-    nav ul li a {
-      color: #fff;
-      font-size: 0.95rem;
-      text-decoration: none;
-    }
-    nav ul li a:hover {
-      text-decoration: underline;
+      background: var(--primary);
+      padding: 1rem 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
     }
 
-    /* ------------------ CONTAINER ------------------ */
-    .container {
-      width: 90%;
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 1rem;
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .brand:hover {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover:after {
+      width: 100%;
     }
 
     /* ------------------ MAIN CONTENT ------------------ */
-    .title {
-      font-size: 2rem;
-      color: #ff4500;
-      margin-bottom: 0.5rem;
-      text-align: center;
+    .container {
+      max-width: 800px;
+      margin: 100px auto 2rem;
+      padding: 0 2rem;
+      animation: fadeInUp 0.6s ease-out;
     }
+
+    .title {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+    }
+
     .subtitle {
       font-size: 1.1rem;
       text-align: center;
-      margin-bottom: 1.5rem;
-      color: #333;
+      color: #666;
+      margin-bottom: 3rem;
+      line-height: 1.8;
     }
 
-    .steps, .data-list {
-      margin: 1rem 0 2rem;
-      font-size: 1rem;
+    /* ------------------ CONTENT SECTIONS ------------------ */
+    .content-section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
     }
-    .steps li,
-    .data-list li {
-      margin: 0.5rem 0;
+
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     }
-    .steps li::marker,
-    .data-list li::marker {
-      color: #ff4500;
-    }
+
     .section-heading {
-      font-size: 1.25rem;
-      color: #ff4500;
-      margin-bottom: 0.5rem;
-      margin-top: 1rem;
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-heading i {
+      color: var(--accent);
+      font-size: 1.2em;
+    }
+
+    /* ------------------ LISTS ------------------ */
+    .steps, .data-list {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .steps li, .data-list li {
+      margin: 1.2rem 0;
+      padding: 1rem;
+      background: rgba(249, 250, 251, 0.5);
+      border-radius: 8px;
+      transition: var(--transition);
+      animation: listItemAppear 0.4s ease-out forwards;
+      opacity: 0;
+    }
+
+    .steps li:nth-child(1) { animation-delay: 0.2s; }
+    .steps li:nth-child(2) { animation-delay: 0.3s; }
+    .steps li:nth-child(3) { animation-delay: 0.4s; }
+    .steps li:nth-child(4) { animation-delay: 0.5s; }
+    .steps li:nth-child(5) { animation-delay: 0.6s; }
+    .steps li:nth-child(6) { animation-delay: 0.7s; }
+    .steps li:nth-child(7) { animation-delay: 0.8s; }
+
+    .steps li:hover, .data-list li:hover {
+      transform: translateX(10px);
+      background: var(--light-bg);
+    }
+
+    .data-list li {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .data-list li:before {
+      content: '•';
+      color: var(--accent);
+      font-weight: bold;
+      position: absolute;
+      left: 1rem;
     }
 
     /* ------------------ FOOTER ------------------ */
     footer {
-      background-color: #212121;
-      color: #ffffff;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    footer p {
-      font-size: 0.9rem;
+      background: var(--primary);
+      color: white;
+      padding: 3rem 0;
+      margin-top: 4rem;
     }
 
-    /* ------------------ RESPONSIVE MEDIA QUERY ------------------ */
-    @media (max-width: 600px) {
-      .title {
-        font-size: 1.6rem;
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+
+    .footer-section h3 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin: 0.8rem 0;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+      padding-left: 0.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      font-size: 1.5rem;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ------------------ RESPONSIVE DESIGN ------------------ */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 1rem;
       }
-      .subtitle {
-        font-size: 1rem;
+
+      .nav-links {
+        display: none;
+      }
+
+      .container {
+        margin-top: 80px;
+        padding: 0 1rem;
+      }
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -126,9 +320,9 @@
 <body>
   <!-- ================= HEADER ================= -->
   <header>
-    <div class="brand">Click Solver</div>
-    <nav>
-      <ul>
+    <nav class="nav-container">
+      <a href="/" class="brand">ClickSolver</a>
+      <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/#services">Services</a></li>
         <li><a href="/#contact">Contact</a></li>
@@ -144,47 +338,95 @@
       please follow the steps below.
     </p>
 
-    <!-- Steps to delete the account in the app -->
-    <ol class="steps">
-      <li>Open the <strong>Click Solver</strong> app on your device.</li>
-      <li>Go to <strong>Account Settings</strong>.</li>
-      <li>Select <strong>Delete My Account</strong>.</li>
-      <li>You will see your <strong>Name, Email, and Phone Number</strong>.</li>
-      <li>Tap the <strong>Delete Account</strong> button to proceed.</li>
-      <li>A <strong>confirmation screen</strong> will appear.</li>
-      <li>Confirm your account deletion to finalize the process.</li>
-    </ol>
+    <div class="content-section">
+      <h2 class="section-heading">
+        <i class="fas fa-trash-alt"></i>
+        Account Deletion Process
+      </h2>
+      <ol class="steps">
+        <li>Open the <strong>Click Solver</strong> app on your device</li>
+        <li>Navigate to <strong>Account Settings</strong></li>
+        <li>Select <strong>Delete My Account</strong></li>
+        <li>Review your account information</li>
+        <li>Confirm deletion via verification code</li>
+        <li>Complete final confirmation</li>
+        <li>Account deletion complete</li>
+      </ol>
+    </div>
 
-    <!-- Data removed or retained -->
-    <h2 class="section-heading">What Data Will Be Deleted?</h2>
-    <ul class="data-list">
-      <li>Your name, email, and phone number.</li>
-      <li>All service requests, payment history, and addresses.</li>
-      <li>Any saved preferences related to your account.</li>
-    </ul>
+    <div class="content-section">
+      <h2 class="section-heading">
+        <i class="fas fa-database"></i>
+        Data Management
+      </h2>
+      <div class="data-section">
+        <h3 class="section-heading">Removed Data</h3>
+        <ul class="data-list">
+          <li>Personal identification information</li>
+          <li>Service request history</li>
+          <li>Payment methods and transaction details</li>
+        </ul>
 
-    <h2 class="section-heading">What Data Will Be Retained?</h2>
-    <ul class="data-list">
-      <li>
-        Some transaction records may be retained for legal and fraud prevention
-        purposes.
-      </li>
-      <li>Data required by financial regulations may be kept for up to 6 months.</li>
-    </ul>
+        <h3 class="section-heading">Retained Data</h3>
+        <ul class="data-list">
+          <li>Legal compliance records</li>
+          <li>Fraud prevention data</li>
+          <li>Financial transaction metadata</li>
+        </ul>
+      </div>
+    </div>
 
-    <!-- Support Contact -->
-    <h2 class="section-heading">Need Help?</h2>
-    <p>
-      If you have any questions or experience issues,
-      please contact us at
-      <a href="mailto:customer.support@clicksolver.com">customer.support@clicksolver.com</a>.
-    </p>
+    <div class="content-section">
+      <h2 class="section-heading">
+        <i class="fas fa-life-ring"></i>
+        Support Assistance
+      </h2>
+      <p class="support-text">
+        Need help? Contact our support team:
+        <a href="mailto:support@clicksolver.com" class="support-link">
+          support@clicksolver.com
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </p>
+    </div>
   </main>
 
   <!-- ================= FOOTER ================= -->
   <footer>
-    <p>&copy; 2025 Click Solver. All rights reserved.</p>
-    <p>Developer: <strong>Click Solver</strong></p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/security">Security</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <p class="copyright">
+      © 2025 Click Solver. All rights reserved.<br>
+      Empowering digital solutions since 2020
+    </p>
   </footer>
 </body>
 </html>
